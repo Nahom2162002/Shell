@@ -9,7 +9,7 @@ int main(char** args) {
     char * command;
 
     while (fgets(command, sizeof(command), stdin)) {
-        
+
     }
 }
 
@@ -28,11 +28,22 @@ void builtin_cd(char** args) {
 }
 
 void builtin_pwd() {
-
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("%s\n", cwd);
+    }
+    else {
+        perror("pwd");
+    }
 }
 
 void builtin_exit(char** args) {
-
+    if (args[1] != NULL) {
+        exit(atoi(args[1]));
+    }
+    else {
+        exit(0); 
+    }
 }
 
 void cat(char** args) {
