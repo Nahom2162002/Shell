@@ -4,11 +4,27 @@
 #include "shell.h"
 
 int main(char** args) {
+    printf("Welcome to this custom based UNIX Shell that I made! This is just the beginning so as time passes there will certainly be updates.\n");
+    printf("~$");
+    char * command;
 
+    while (fgets(command, sizeof(command), stdin)) {
+        
+    }
 }
 
 void builtin_cd(char** args) {
-
+    if (args[1] == NULL) {
+        char* home = getenv("HOME");
+        if (chdir(home) != 0) {
+            perror("cd");
+        }
+    }
+    else {
+        if (chdir(args[1]) != 0) {
+            perror("cd");
+        }
+    }
 }
 
 void builtin_pwd() {
@@ -28,5 +44,5 @@ void echo(char** args) {
 }
 
 void ls(char** args) {
-    
+
 }
