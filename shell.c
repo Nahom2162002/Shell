@@ -55,5 +55,17 @@ void echo(char** args) {
 }
 
 void ls(char** args) {
+    pid_t pid;
+    char* arguments[2] = { "ls", NULL };
 
+    pid = fork();
+
+    if (pid == -1) {
+        perror("fork");
+        exit(EXIT_FAILURE);
+    }
+    else if (pid == 0) {
+        execvp(arguments[0], arguments);
+        exit(EXIT_SUCCESS);
+    }
 }
