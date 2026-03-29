@@ -55,6 +55,8 @@ void cat(char** args) {
     while (fgets(line, MAX_BUFFER, content) != NULL) {
         printf("%s\n", line);
     }
+
+    fclose(content);
 }
 
 void echo(char** args) {
