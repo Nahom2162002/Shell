@@ -5,7 +5,7 @@ void builtin_cd(char** args);
 
 void builtin_pwd();
 
-void builtin_exit(char** args);
+void builtin_exit();
 
 void cat(char** args);
 
