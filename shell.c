@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include "shell.h"
 
 #define MAX_BUFFER 256
@@ -11,7 +12,24 @@ int main(int argc, char** args) {
     char command[MAX_BUFFER];
 
     while (fgets(command, MAX_BUFFER, stdin)) {
-
+        if (strcmp(command, "cd")) {
+            
+        }
+        if (strcmp(command, "pwd")) {
+            builtin_pwd();
+        }
+        if (strcmp(command, "exit")) {
+            builtin_exit();
+        }
+        if (strcmp(command, "cat")) {
+            
+        }
+        if (strcmp(command, "echo")) {
+            
+        }
+        if (strcmp(command, "ls")) {
+            
+        }
     }
 }
 
@@ -39,13 +57,8 @@ void builtin_pwd() {
     }
 }
 
-void builtin_exit(char** args) {
-    if (args[1] != NULL) {
-        exit(atoi(args[1]));
-    }
-    else {
-        exit(0); 
-    }
+void builtin_exit() {
+    exit(0);
 }
 
 void cat(char** args) {
@@ -60,7 +73,7 @@ void cat(char** args) {
 }
 
 void echo(char** args) {
-
+    
 }
 
 void ls(char** args) {
